@@ -1,3 +1,5 @@
+import { calc_combinations } from "./math.js";
+
 function calc_expected_value(n, p) {
     return n * p;
 }
@@ -10,7 +12,7 @@ function calc_prob(n, p, x) {
     return calc_combinations(n, x) * Math.pow(p, x) * Math.pow(1 - p, n - x);
 }
 
-function calc_dist() {
+export default function calc_dist() {
     let n = parseInt(document.getElementById("n-trials").value);
     let p = parseFloat(document.getElementById("p-success").value);
 
@@ -33,6 +35,8 @@ function calc_dist() {
     for (let i = 1; i <= n; i++) {
         binomial_dist.cumProb.push(binomial_dist.cumProb[i - 1] + binomial_dist.probabilities[i]);
     }
+
+    console.log(binomial_dist)
 
     return binomial_dist;
 }
