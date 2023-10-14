@@ -3,20 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
     <script type="module" src="js/app.js"></script>
     <script type="module" src="js/math.js" ></script>
     <script type="module" src="js/binomial_dist.js"></script>
     <script type="module" src="js/graphing.js"></script>
+
     <title>Binomial Distribution Calculator</title>
 </head>
 <body>
-    <label for="n-trials">n</label>
-    <input type="number" class="dist-parameter" min="0" id="n-trials">
-    
-    <label for="p-success">p</label>
-    <input type="number" class="dist-parameter" min="0.0" max="1.0" step="0.01" id="p-success">
-    
-    <label for="x">x</label>
-    <input type="number" min="0" id="x">
+    <div class="dist-input">
+        <div class="dist-parameters">
+            <div class="input-container">
+                <label for="n-trials">n</label>
+                <input type="number" class="dist-parameter" min="0" id="n-trials">
+            </div>
+            
+            <div class="input-container">
+                <label for="p-success">p</label>
+                <input type="number" class="dist-parameter" min="0.0" max="1.0" step="0.01" id="p-success">
+            </div>
+        </div>
+        
+        <div class="input-container">
+            <label for="x">x</label>
+            <input type="number" min="0" id="x">
+        </div>
+    </div>
+    <div class="dist-output">
+
+    </div>
 </body>
 </html>
