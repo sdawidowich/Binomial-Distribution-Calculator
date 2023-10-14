@@ -12,10 +12,7 @@ function calc_prob(n, p, x) {
     return calc_combinations(n, x) * Math.pow(p, x) * Math.pow(1 - p, n - x);
 }
 
-export default function calc_dist() {
-    let n = parseInt(document.getElementById("n-trials").value);
-    let p = parseFloat(document.getElementById("p-success").value);
-
+export default function calc_dist(n, p) {
     if (isNaN(n) || isNaN(p)) {
         return;
     }
