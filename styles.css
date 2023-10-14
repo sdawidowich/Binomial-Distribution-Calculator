@@ -35,3 +35,33 @@ input {
     border-radius: 0.5rem;
     box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
 }
+
+.bar {
+    transition: fill 0.1s;
+}
+
+.bar:hover {
+    filter: brightness(0.7);
+}
+
+#tooltip {
+    opacity: 0;
+    transition: opacity 0.2s;
+    position: absolute;
+    padding: 0.3rem;
+
+    background-color: rgb(44, 44, 44);
+    color: white;
+
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.13);
+}
+
+#tooltip > label {
+    font-size: 0.7rem;
+}
+
+#tooltip-val {
+    font-size: 0.9rem;
+}
