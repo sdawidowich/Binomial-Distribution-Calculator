@@ -10,10 +10,10 @@ body {
 }
 
 input {
-    border: 1px solid grey;
+    border: 1px solid rgb(204, 204, 204);
     border-radius: 0.5rem;
     padding: 0.5rem;
-    box-shadow: 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.089);
+    box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
 }
 
 .dist-input {
@@ -27,4 +27,11 @@ input {
 
 .input-container {
     margin: 0.5rem;
+}
+
+.dist-graph > svg {
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
 }
