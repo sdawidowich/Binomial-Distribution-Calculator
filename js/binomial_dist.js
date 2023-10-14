@@ -20,17 +20,17 @@ export default function calc_dist(n, p) {
     let binomial_dist = {
         expected_value: calc_expected_value(n, p),
         variance: calc_variance(n, p),
-        probabilities: [],
-        cumProb: []
+        probabilities: {},
+        cumProb: {}
     }
 
     for (let i = 0; i <= n; i++) {
-        binomial_dist.probabilities.push(calc_prob(n, p, i));
+        binomial_dist.probabilities[i] = calc_prob(n, p, i);
     }
 
-    binomial_dist.cumProb.push(binomial_dist.probabilities[0]);
+    binomial_dist.cumProb[0] = binomial_dist.probabilities[0];
     for (let i = 1; i <= n; i++) {
-        binomial_dist.cumProb.push(binomial_dist.cumProb[i - 1] + binomial_dist.probabilities[i]);
+        binomial_dist.cumProb[i] = binomial_dist.cumProb[i - 1] + binomial_dist.probabilities[i];
     }
 
     console.log(binomial_dist)
