@@ -1,9 +1,9 @@
 export function calc_combinations(n, k) {
-    let x = 1;
-    let y = 1;
+    let x = Math.log10(1);
+    let y = Math.log10(1);
     for (let i = n, j = 1; i > (n - k); i--, j++) {
-        x *= i;
-        y *= j;
+        x += Math.log10(i);
+        y += Math.log10(j);
     }
-    return x / y;
+    return x - y;
 }
