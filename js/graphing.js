@@ -11,16 +11,16 @@ export function graph_dist(dist) {
     const height = 500;
 
     const margin = {
-        left: 40,
+        left: 70,
         right: 40,
         top: 40,
-        bottom: 40
+        bottom: 50
     }
 
     // Declare the x (horizontal position) scale.
     const x_scale = d3.scaleBand()
         .domain(data.map((d) => d))
-        .range([0, width - margin.right]).padding(0.1);
+        .range([margin.left, width - margin.right]).padding(0.2);
 
     // Declare the y (vertical position) scale.
     const y_scale = d3.scaleLinear()
@@ -28,10 +28,10 @@ export function graph_dist(dist) {
         .range([height - margin.bottom, margin.top]);
 
 
-    d3.select(".dist-output svg").remove("svg");
+    d3.select(".dist-output .dist-graph svg").remove("svg");
 
     // Create the SVG container.
-    const svg = d3.select(".dist-output").append("svg");
+    const svg = d3.select(".dist-output .dist-graph").append("svg");
     svg.attr("width", width)
         .attr("height", height)
         .attr("viewBox", [0, 0, width, height]);
@@ -41,18 +41,31 @@ export function graph_dist(dist) {
         .data(data)
         .join("rect")
         .attr("class", "bar")
-        .attr("x", (d) => x_scale(d) + margin.left)
+        .attr("x", (d) => x_scale(d))
         .attr("y", (d) => y_scale(dist.probabilities[d]))
         .attr("width", x_scale.bandwidth())
         .attr("height", (d) => height - (y_scale(dist.probabilities[d]) + margin.bottom));
 
     // Create x-axis 
     svg.append("g")
-        .attr("transform", `translate(${margin.left}, ${height - margin.bottom})`)
-        .call(d3.axisBottom(x_scale));
+        .attr("transform", `translate(0, ${height - margin.bottom})`)
+        .call(d3.axisBottom(x_scale))
+        .call((g) => g.append("text")
+            .attr("x", (width + margin.left - margin.right) / 2)
+            .attr("y", margin.top / 1.25)
+            .attr("fill", "currentColor")
+            .attr("text-anchor", "middle")
+            .text("x"));
+
 
     svg.append("g")
     .attr("transform", `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(y_scale).ticks(5))
     .call((g) => g.select(".domain").remove())
+    .call((g) => g.append("text")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left / 1.5)
+        .attr("fill", "currentColor")
+        .attr("transform", "rotate(-90)")
+        .text("P(X = x)"));
 }
