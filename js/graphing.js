@@ -4,18 +4,18 @@ export function graph_dist(dist) {
     // Filter out useless data (Probabilities that are practically 0)
     const keys = Object.keys(dist.probabilities);
     const data = keys.filter((key) => {
-        return dist.probabilities[key] > 0.0000001;
+        return dist.probabilities[key] > 0.000001;
     });
 
     // Declare the chart dimensions and margins.
-    const width = 960;
-    const height = 500;
+    const width = document.querySelector(".dist-graph").clientWidth;
+    const height = width / 2;
 
     const margin = {
-        left: 70,
-        right: 40,
-        top: 40,
-        bottom: 50
+        left: 60,
+        right: 30,
+        top: 30,
+        bottom: 40
     }
 
     // Declare the x (horizontal position) scale.
@@ -29,12 +29,14 @@ export function graph_dist(dist) {
         .range([height - margin.bottom, margin.top]);
 
     // Remove existing graph if it exists
-    d3.select(".dist-output .dist-graph svg").remove("svg");
+    d3.select(".dist-output > .dist-graph > svg").remove("svg");
 
     // Create the SVG container.
-    const svg = d3.select(".dist-output .dist-graph").append("svg");
-    svg.attr("width", width)
+    const svg = d3.select(".dist-output > .dist-graph")
+        .append("svg")
+        .attr("width", width)
         .attr("height", height)
+        .attr("preserveAspectRatio", "xMinYMin meet")
         .attr("viewBox", [0, 0, width, height]);
 
     // Create tooltip when user hovers over a bar
@@ -66,13 +68,26 @@ export function graph_dist(dist) {
             .on("mouseover", mouseover)
             .on("mouseout", mouseleave);
 
+    // Shrink number of tick marks on x-xis depending on width of graph
+    let tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(4));
+    if (width > 550 && width < 750) {
+        tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(3));
+    }
+    else if (width < 550) {
+        tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(2));
+    }
+
     // Create x-axis 
     svg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
-        .call(d3.axisBottom(x_scale))
+        .call(d3.axisBottom(x_scale)
+        .tickValues(
+            data.map((d, i) =>
+              i % tickIncrement == 0 ? d : undefined).filter(item => item)
+        ))
         .call((g) => g.append("text")
             .attr("x", (width + margin.left - margin.right) / 2)
-            .attr("y", margin.top / 1.25)
+            .attr("y", margin.top )
             .attr("fill", "currentColor")
             .attr("text-anchor", "middle")
             .text("x"));
@@ -87,5 +102,11 @@ export function graph_dist(dist) {
         .attr("y", -margin.left / 1.5)
         .attr("fill", "currentColor")
         .attr("transform", "rotate(-90)")
+        .attr("text-anchor", "middle")
         .text("P(X = x)"));
+
+        
+    // Resize/Rerender graph on window resize
+    let container = d3.select(svg.node().parentNode);
+    d3.select(window).on("resize." + container.attr("id"), () => graph_dist(dist));
 }
