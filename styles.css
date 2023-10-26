@@ -1,6 +1,10 @@
 :root {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0rem;
+
+    --table-header-size: 40.8px;
+    --graph-width: 140vh;
+    --graph-height: calc(var(--graph-width) / 2);
 }
 
 body {
@@ -59,7 +63,7 @@ input {
     flex-grow: 1;
     min-width: 300px; /* Minimum width for the graph */
     width: 100%;
-    max-width: 140vh;
+    max-width: var(--graph-width);
     margin: 8px;
 }
 
@@ -135,6 +139,7 @@ tbody tr:hover {
     border: 1px solid rgb(204, 204, 204);
     box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
     background-color: rgb(243, 243, 243);
+    height: var(--graph-height);
 }
 
 .prob-table td, .prob-table th {
@@ -150,8 +155,9 @@ tbody tr:hover {
 .prob-table tbody {
     display: block;
     overflow: auto;
+    scrollbar-gutter: stable;
     width: 100%;
-    height: calc(70vh - 40.8px);
+    height: calc(var(--graph-height) - var(--table-header-size));
 }
 
 .prob-table thead tr {
