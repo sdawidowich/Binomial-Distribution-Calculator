@@ -50,7 +50,7 @@ export function graph_dist(dist) {
         tooltip.style('opacity', 0);
     }
     const mousemove = (event, d) => {
-        const x = event.pageX + 15, y = event.pageY - 60;
+        const x = event.clientX + 15, y = event.clientY - 60;
         tooltip.select("label").text(`P(X = ${d})`);
         tooltip.select("#tooltip-val").text(`= ${dist.probabilities[d].toFixed(6)}`);
         tooltip.style('left', (x) + "px").style('top', (y) + "px");
@@ -61,7 +61,6 @@ export function graph_dist(dist) {
         .data(data)
         .join("rect")
             .attr("class", "bar")
-            .attr("fill", "steelblue")
             .attr("x", (d) => x_scale(d))
             .attr("y", (d) => y_scale(dist.probabilities[d]))
             .attr("width", x_scale.bandwidth())
@@ -113,4 +112,13 @@ export function graph_dist(dist) {
     // Resize/Rerender graph on window resize
     let container = d3.select(svg.node().parentNode);
     d3.select(window).on("resize." + container.attr("id"), () => graph_dist(dist));
+}
+
+export function update_graph_bar_fill(lowerIndex, upperIndex) {
+    let svg = d3.select(".dist-output > .dist-graph > svg");
+    svg.selectAll("rect").each(function(d) {
+        if (d >= lowerIndex && d <= upperIndex) {
+            d3.select(this).attr("class", "bar selected");
+        }
+    })
 }

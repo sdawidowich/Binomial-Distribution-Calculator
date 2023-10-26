@@ -77,7 +77,11 @@ input, select {
 }
 
 .bar {
-    transition: fill 0.1s;
+    fill: steelblue;
+}
+
+.bar.selected {
+    fill: rgb(180, 70, 70);
 }
 
 .bar:hover {
@@ -234,4 +238,8 @@ select:hover {
     box-shadow: 0 0 0.3rem 0.1rem rgba(0, 0, 0, 0.041);
 
     max-width: 12rem;
+}
+
+.prop-value {
+    font-weight: bold;
 }
