@@ -41,6 +41,8 @@ export function graph_dist(dist) {
 
     // Create tooltip when user hovers over a bar
     const tooltip = d3.select('#tooltip');
+    
+    tooltip.style('left', "0px").style('top', "0px");
     const mouseover = (event, d) => {
         tooltip.style("opacity", 0.9);
     };
@@ -50,7 +52,7 @@ export function graph_dist(dist) {
     const mousemove = (event, d) => {
         const x = event.pageX + 15, y = event.pageY - 60;
         tooltip.select("label").text(`P(X = ${d})`);
-        tooltip.select("#tooltip-val").text(`= ${dist.probabilities[d].toFixed(5)}`);
+        tooltip.select("#tooltip-val").text(`= ${dist.probabilities[d].toFixed(6)}`);
         tooltip.style('left', (x) + "px").style('top', (y) + "px");
     };
 
@@ -90,6 +92,7 @@ export function graph_dist(dist) {
             .attr("y", margin.top )
             .attr("fill", "currentColor")
             .attr("text-anchor", "middle")
+            .style("font-size", "0.8rem")
             .text("x"));
 
     // Create y-axis
@@ -103,6 +106,7 @@ export function graph_dist(dist) {
         .attr("fill", "currentColor")
         .attr("transform", "rotate(-90)")
         .attr("text-anchor", "middle")
+        .style("font-size", "0.8rem")
         .text("P(X = x)"));
 
         
