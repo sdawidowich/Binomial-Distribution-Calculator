@@ -117,7 +117,7 @@ export function graph_dist(dist) {
 export function update_graph_bar_fill(lowerIndex, upperIndex) {
     let svg = d3.select(".dist-output > .dist-graph > svg");
     svg.selectAll("rect").each(function(d) {
-        if (d >= lowerIndex && d <= upperIndex) {
+        if (parseInt(d) >= lowerIndex && parseInt(d) <= upperIndex) {
             d3.select(this).attr("class", "bar selected");
         }
     })

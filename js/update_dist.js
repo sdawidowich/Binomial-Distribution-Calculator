@@ -20,12 +20,12 @@ function update_table(table, probabilities) {
 }
 
 function update_dist_value(dist) {
-    let prob_val = document.getElementById("x").value;
+    let prob_val = parseInt(document.getElementById("x").value);
     let prob_val_type = document.getElementById("prob-value-select").value;
     let output_el = document.querySelector(".value-output");
 
     let dist_size = Object.keys(dist.probabilities).length;
-    if (!prob_val || (parseInt(prob_val) + 1) > dist_size || parseInt(prob_val) < 0) {
+    if (!prob_val || (prob_val + 1) > dist_size || prob_val < 0) {
         output_el.textContent = "Undefined";
         return;
     }
