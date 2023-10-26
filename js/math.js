@@ -7,3 +7,8 @@ export function calc_combinations(n, k) {
     }
     return x - y;
 }
+
+
+export function round(val, precision) {
+    return parseFloat(val.toFixed(precision));
+}
