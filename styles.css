@@ -9,16 +9,11 @@ body {
     align-items: center;
 }
 
-input {
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
-}
-
 .dist-input {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .dist-parameters {
@@ -26,18 +21,40 @@ input {
 }
 
 .input-container {
+    display: flex;
+    align-items: center;
     margin: 0.5rem;
+    width: 100%;
+}
+
+.input-container > label {
+    padding: 0.5rem;
+}
+
+input {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
+    
+    min-width: 80px;
+    width: 100%;
+    max-width: 150px;
 }
 
 .dist-output {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
+    justify-content: center;
+    width: calc(100vw - 17px);
+    flex-wrap: wrap;
 }
 
 .dist-graph {
-    width: 95%;
+    flex-grow: 1;
+    min-width: 300px; /* Minimum width for the graph */
+    width: 100%;
+    max-width: 140vh;
+    margin: 8px;
 }
 
 .dist-graph > svg {
@@ -58,7 +75,7 @@ input {
 #tooltip {
     opacity: 0;
     transition: opacity 0.2s;
-    position: absolute;
+    position: fixed;
     padding: 0.3rem;
 
     background-color: rgb(44, 44, 44);
@@ -75,4 +92,59 @@ input {
 
 #tooltip-val {
     font-size: 0.9rem;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+thead > tr {
+    background-color: rgb(221, 221, 221);
+}
+
+td {
+    background-color: rgb(243, 243, 243);
+}
+
+tbody tr:hover {
+    filter: brightness(0.95);
+}
+
+.prob-tables {
+    display: flex;
+}
+
+.prob-table-container {
+    overflow: hidden;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(204, 204, 204);
+    box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
+    background-color: rgb(243, 243, 243);
+}
+
+.prob-table td, .prob-table th {
+    width: 100px;
+    padding: 0.7rem;
+    text-align: left;
+}
+
+.prob-table th:nth-child(1), .prob-table td:nth-child(1) {
+    width: 50px;
+}
+
+.prob-table tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    min-height: 500px;
+    height: 100%;
+}
+
+.prob-table thead tr {
+    display: block;
 }

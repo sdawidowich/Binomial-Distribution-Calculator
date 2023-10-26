@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/update_dist.js"></script>
     <script type="module" src="js/math.js" ></script>
     <script type="module" src="js/binomial_dist.js"></script>
     <script type="module" src="js/graphing.js"></script>
@@ -27,19 +28,46 @@
             </div>
         </div>
         
-        <div class="input-container">
-            <label for="x">x</label>
-            <input type="number" min="0" id="x">
+        <div class="dist-value">
+            <div class="input-container">
+                <label for="x">x</label>
+                <input type="number" min="0" id="x">
+            </div>
         </div>
     </div>
     <div class="dist-output">
         <div class="dist-graph">
         </div>
-        <div class="dist-values">
-            <span class="ev"></span>
-            <span class="var"></span>
-            <span class="sd"></span>
+        <div class="prob-tables">
+            <div class="prob-table-container">
+                <table class="prob-table" id="prob-table">
+                    <thead>
+                        <tr>
+                            <th>x</th>
+                            <th>P(X = x)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="prob-table-container">
+                <table class="prob-table" id="cum-prob-table">
+                    <thead>
+                        <tr>
+                            <th>x</th>
+                            <th>Σ P(X &le; x)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
+        <div class="dist-properties">
+            <div class="ev"></div>
+            <div class="var"></div>
+            <div class="sd"></div>
+        </div>
+        
     </div>
     <div id="tooltip">
         <label for="tooltip-val"></label>

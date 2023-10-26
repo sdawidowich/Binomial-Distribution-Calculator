@@ -32,8 +32,6 @@ export default function calc_dist(n, p) {
     for (let i = 1; i <= n; i++) {
         binomial_dist.cumProb[i] = binomial_dist.cumProb[i - 1] + binomial_dist.probabilities[i];
     }
-
-    console.log(binomial_dist)
-
+    
     return binomial_dist;
 }
