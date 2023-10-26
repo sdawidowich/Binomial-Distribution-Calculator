@@ -9,6 +9,8 @@ body {
     align-items: center;
 }
 
+/* Input Styling */
+
 .dist-input {
     display: flex;
     flex-direction: column;
@@ -42,12 +44,16 @@ input {
     max-width: 150px;
 }
 
+/* Output Styling */
+
 .dist-output {
     display: flex;
     justify-content: center;
     width: calc(100vw - 17px);
     flex-wrap: wrap;
 }
+
+/* Graph Styling */
 
 .dist-graph {
     flex-grow: 1;
@@ -72,6 +78,8 @@ input {
     filter: brightness(0.7);
 }
 
+/* Tooltip Stylinh */
+
 #tooltip {
     opacity: 0;
     transition: opacity 0.2s;
@@ -93,6 +101,8 @@ input {
 #tooltip-val {
     font-size: 0.9rem;
 }
+
+/* Table Styling */
 
 table {
     border-collapse: collapse;
@@ -141,8 +151,7 @@ tbody tr:hover {
     display: block;
     overflow: auto;
     width: 100%;
-    min-height: 500px;
-    height: 100%;
+    height: calc(70vh - 40.8px);
 }
 
 .prob-table thead tr {
