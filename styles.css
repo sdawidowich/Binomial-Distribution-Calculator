@@ -2,7 +2,8 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0rem;
 
-    --table-header-size: 40.8px;
+    --table-header-height: 40.8px;
+    --table-footer-height: 56px;
     --graph-width: 100vw;
     --graph-height: calc(var(--graph-width) / 2);
 
@@ -54,7 +55,7 @@ body {
     padding: 0.5rem;
 }
 
-input, select {
+input, select, button {
     background-color: var(--input-background-color);
     border: 1px solid var(--container-border-color);
     border-radius: 0.5rem;
@@ -146,10 +147,11 @@ table {
 
 thead {
     border-bottom: 1px solid var(--container-border-color);
+    background-color: rgb(221, 221, 221);
 }
 
-thead > tr {
-    background-color: rgb(221, 221, 221);
+tfoot {
+    border-top: 1px solid var(--container-border-color);
 }
 
 td {
@@ -195,7 +197,7 @@ tbody tr:hover {
     display: block;
     overflow: auto;
     scrollbar-gutter: stable;
-    height: calc(var(--table-height) - var(--table-header-size));
+    height: calc(var(--table-height) - var(--table-header-height) - var(--table-footer-height));
 }
 
 .prob-table thead tr {
@@ -230,7 +232,7 @@ tbody tr:hover {
     min-width: 5rem;
 }
 
-select:hover {
+select:hover, button:hover {
     cursor: pointer;
 }
 

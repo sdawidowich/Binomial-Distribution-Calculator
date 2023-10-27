@@ -23,3 +23,16 @@ export function get_dist_val(dist) {
         return { lowerIndex: prob_val, upperIndex: dist_size, val: (1 - dist.cumProb[prob_val - 1].toFixed(6)).toFixed(6) };
     }
 }
+
+export function get_prob_data_blob(dist) {
+    let blob = { probText: "x,P(X = x)\n", cumProbText: "x,Σ P(X <= x)\n" };
+    
+    Object.keys(dist.probabilities).forEach((x) => {
+        blob.probText += x + "," + dist.probabilities[x].toFixed(16) + "\n";
+    });
+    Object.keys(dist.cumProb).forEach((x) => {
+        blob.cumProbText += x + "," + dist.cumProb[x].toFixed(16) + "\n";
+    });
+
+    return blob;
+}

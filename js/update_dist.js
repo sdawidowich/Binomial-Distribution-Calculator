@@ -1,6 +1,7 @@
 import calc_binomial_dist from "./binomial_dist.js"
+import download from "./download.js";
 import { graph_dist } from "./graphing.js";
-import { create_td, get_dist_val } from "./helper_funcs.js";
+import { create_td, get_dist_val, get_prob_data_blob } from "./helper_funcs.js";
 import { round } from "./math.js";
 
 function update_table(table, probabilities) {
@@ -32,6 +33,12 @@ function update_dist_properties(dist) {
     document.getElementById("sd-value").textContent = round(Math.sqrt(dist.variance), precision);
 }
 
+function update_download_files(dist) {
+    let blob = get_prob_data_blob(dist);
+    document.getElementById("probDownloadBtn").onclick = () => download("probData.csv", blob.probText);
+    document.getElementById("cumProbDownloadBtn").onclick = () => download("cumProbData.csv", blob.cumProbText);
+}
+
 export default function update_dist() {
     let n = parseInt(document.getElementById("n-trials").value);
     let p = parseFloat(document.getElementById("p-success").value);
@@ -43,5 +50,6 @@ export default function update_dist() {
         update_table(document.getElementById("cum-prob-table"), dist.cumProb);
         update_dist_value(dist);
         update_dist_properties(dist);
+        update_download_files(dist);
     }
 }
