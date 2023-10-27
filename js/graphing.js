@@ -1,4 +1,5 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { get_dist_val } from "./helper_funcs.js";
 
 export function graph_dist(dist) {
     // Filter out useless data (Probabilities that are practically 0)
@@ -107,16 +108,22 @@ export function graph_dist(dist) {
         .style("font-size", "0.8rem")
         .text("P(X = x)"));
 
+    update_graph_bar_fill(dist);
         
     // Resize/Rerender graph on window resize
     let container = d3.select(svg.node().parentNode);
     d3.select(window).on("resize." + container.attr("id"), () => graph_dist(dist));
 }
 
-export function update_graph_bar_fill(lowerIndex, upperIndex) {
+export function update_graph_bar_fill(dist) {
+    let dist_val = get_dist_val(dist);
+    if (!dist_val) {
+        return;
+    }
+
     let svg = d3.select(".dist-output > .dist-graph > svg");
     svg.selectAll("rect").each(function(d) {
-        if (parseInt(d) >= lowerIndex && parseInt(d) <= upperIndex) {
+        if (parseInt(d) >= dist_val.lowerIndex && parseInt(d) <= dist_val.upperIndex) {
             d3.select(this).attr("class", "bar selected");
         }
     })

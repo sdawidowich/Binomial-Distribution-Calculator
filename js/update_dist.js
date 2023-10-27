@@ -1,12 +1,7 @@
 import calc_binomial_dist from "./binomial_dist.js"
-import { graph_dist, update_graph_bar_fill } from "./graphing.js";
+import { graph_dist } from "./graphing.js";
+import { create_td, get_dist_val } from "./helper_funcs.js";
 import { round } from "./math.js";
-
-function create_td(value) {
-    let td = document.createElement("td");
-    td.textContent = value;
-    return td;
-}
 
 function update_table(table, probabilities) {
     let newRows = [];
@@ -20,28 +15,14 @@ function update_table(table, probabilities) {
 }
 
 function update_dist_value(dist) {
-    let prob_val = parseInt(document.getElementById("x").value);
-    let prob_val_type = document.getElementById("prob-value-select").value;
     let output_el = document.querySelector(".value-output");
-
-    let dist_size = Object.keys(dist.probabilities).length;
-    if (!prob_val || (prob_val + 1) > dist_size || prob_val < 0) {
+    let dist_val = get_dist_val(dist);
+    if (!dist_val) {
         output_el.textContent = "Undefined";
         return;
     }
 
-    if (prob_val_type == "eqX") {
-        output_el.textContent = dist.probabilities[prob_val].toFixed(6);
-        update_graph_bar_fill(prob_val, prob_val);
-    }
-    else if (prob_val_type == "leX") {
-        output_el.textContent = dist.cumProb[prob_val].toFixed(6);
-        update_graph_bar_fill(0, prob_val);
-    }
-    else {
-        output_el.textContent = (1 - dist.cumProb[prob_val - 1]).toFixed(6);
-        update_graph_bar_fill(prob_val, dist_size);
-    }
+    output_el.textContent = dist_val.val;
 }
 
 function update_dist_properties(dist) {
