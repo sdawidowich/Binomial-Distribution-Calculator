@@ -15,6 +15,7 @@
     <title>Binomial Distribution Calculator</title>
 </head>
 <body>
+    <h1>Binomial Distribution Calculator</h1>
     <div class="dist-input">
         <div class="dist-parameters">
             <div class="input-container">
@@ -29,8 +30,7 @@
         </div>
     </div>
     <div class="dist-output">
-        <div class="dist-graph">
-        </div>
+        <div class="dist-graph"></div>
         <div class="prob-tables">
             <div class="container">
                 <table class="prob-table" id="prob-table">
@@ -55,23 +55,23 @@
                 </table>
             </div>
         </div>
-        <div class="dist-properties container">
-            <div class="dist-value">
-                <div class="value-inputs">
-                    <div class="input-container">
-                        <label for="x">x</label>
-                        <input class="dist-val-input" type="number" min="0" id="x">
-                    </div>
-                    <div class="value-select">
-                        <select class="dist-val-input" name="prob-value-select" id="prob-value-select">
-                            <option value="eqX">P(X = x)</option>
-                            <option value="leX">P(X &le; x)</option>
-                            <option value="geX">P(X &ge; x)</option>
-                        </select>
-                    </div>
+        <div class="container dist-value">
+            <div class="value-inputs">
+                <div class="input-container">
+                    <label for="x">x</label>
+                    <input class="dist-val-input" type="number" min="0" id="x">
                 </div>
-                <div class="value-output"></div>
+                <div class="value-select">
+                    <select class="dist-val-input" name="prob-value-select" id="prob-value-select">
+                        <option value="eqX">P(X = x)</option>
+                        <option value="leX">P(X &le; x)</option>
+                        <option value="geX">P(X &ge; x)</option>
+                    </select>
+                </div>
             </div>
+            <div class="value-output"></div>
+        </div>
+        <div class="container dist-properties">
             <div class="dist-prop ev">
                 <span class="prop-label">μ = E(X) =</span>
                 <span class="prop-value" id="ev-value">N/A</span>

@@ -83,8 +83,7 @@ export function graph_dist(dist) {
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .call(d3.axisBottom(x_scale)
         .tickValues(
-            data.map((d, i) =>
-              i % tickIncrement == 0 ? d : undefined).filter(item => item)
+            data.map((d, i) => i % tickIncrement == 0 ? d : undefined).filter(item => item)
         ))
         .call((g) => g.append("text")
             .attr("x", (width + margin.left - margin.right) / 2)
