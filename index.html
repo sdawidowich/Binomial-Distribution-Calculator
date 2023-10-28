@@ -11,9 +11,13 @@
     <script type="module" src="js/update_dist.js"></script>
     <script type="module" src="js/math.js" ></script>
     <script type="module" src="js/dist-calculators/binomial_dist.js"></script>
+    <script type="module" src="js/dist-calculators/geometric_dist.js"></script>
+    <script type="module" src="js/dist-calculators/hypergeometric_dist.js"></script>
+    <script type="module" src="js/dist-calculators/neg_binomial_dist.js"></script>
+    <script type="module" src="js/dist-calculators/poisson_dist.js"></script>
     <script type="module" src="js/graphing.js"></script>
 
-    <title>Binomial Distribution Calculator</title>
+    <title>Distribution Calculator</title>
 </head>
 <body>
     <header>
@@ -42,8 +46,17 @@
     </header>
     <h1>Binomial Distribution Calculator</h1>
     <main>
-        <div class="dist-input">
-            <div class="dist-parameters container">
+        <div class="dist-input container">
+            <div class="input-tooltip">
+                <div class="icon">i</div>
+                <div class="text container">
+                    <p>X ~ B(n, p)</p>
+                    <p>n = the number of trials in the experiment.</p>
+                    <p>p = the probability of a success in any given trial.</p>
+                    <p>P(X = x) = Probability of x successes in n trials.</p>
+                </div>
+            </div>
+            <div class="dist-parameters">
                 <div class="input-container">
                     <label for="n-trials">n</label>
                     <input type="number" class="dist-parameter" min="0" id="n-trials">

@@ -76,13 +76,46 @@ main {
 
 .dist-input {
     display: flex;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.input-tooltip > .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 1rem;
+    border: 1px solid var(--container-border-color);
+    border-radius: 100%;
+    box-shadow: 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.055);
+    box-sizing: border-box;
+    cursor: default;
+
+    font-size: 14px;
+}
+
+.input-tooltip > .text {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    transform: translateY(calc(-100% - 48px));
+    padding: 0rem 1rem;
+
+    transition: 0.5s;
+}
+
+.input-tooltip > .icon:hover + .text {
+    display: block;
 }
 
 .dist-parameters {
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    flex-wrap: wrap;
+    padding: 0.7rem;
 }
 
 .input-container {
@@ -314,9 +347,9 @@ select:hover, button:hover {
     align-items: center;
     flex-wrap: wrap;
 
-    margin: 1rem 1rem;
+    margin: 0.8rem;
     height: 40px;
-    max-width: 12rem;
+    max-width: 13rem;
 }
 
 .prop-value {

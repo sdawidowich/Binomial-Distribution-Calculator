@@ -70,7 +70,7 @@ export function graph_dist(dist) {
             .on("mouseover", mouseover)
             .on("mouseout", mouseleave);
 
-    // Shrink number of tick marks on x-xis depending on width of graph
+    // Shrink number of tick marks on x-xis depending on width of graph and # of data points.
     let tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(4));
     if (width > 550 && width < 750) {
         tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(3));
@@ -78,7 +78,8 @@ export function graph_dist(dist) {
     else if (width < 550) {
         tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(2));
     }
-    else if (data.length > 1000) {
+    
+    if (data.length > 1000) {
         tickIncrement = Math.floor(Math.log10(data.length) / (Math.log10(2)) * 4);
     }
     else if (data.length > 500) {
@@ -87,6 +88,7 @@ export function graph_dist(dist) {
     else if (data.length > 100) {
         tickIncrement = Math.floor(Math.log10(data.length) / Math.log10(2));
     }
+
     if (tickIncrement == 0) {
         tickIncrement = 1;
     }
