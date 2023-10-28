@@ -1,4 +1,4 @@
-import { calc_combinations } from "./math.js";
+import { calc_combinations_log10 } from "../math.js";
 
 function calc_expected_value(n, p) {
     return n * p;
@@ -9,12 +9,12 @@ function calc_variance(n, p) {
 }
 
 function calc_prob(n, p, x) {
-    return Math.pow(10, calc_combinations(n, x) + Math.log10(Math.pow(p, x)) + Math.log10(Math.pow(1 - p, n - x)));
+    return Math.pow(10, calc_combinations_log10(n, x) + Math.log10(Math.pow(p, x) * Math.pow(1 - p, n - x)));
 }
 
 export default function calc_dist(n, p) {
     if (isNaN(n) || isNaN(p)) {
-        return;
+        return undefined;
     }
 
     let binomial_dist = {

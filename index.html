@@ -10,96 +10,121 @@
     <script type="module" src="js/helper_funcs.js"></script>
     <script type="module" src="js/update_dist.js"></script>
     <script type="module" src="js/math.js" ></script>
-    <script type="module" src="js/binomial_dist.js"></script>
+    <script type="module" src="js/dist-calculators/binomial_dist.js"></script>
     <script type="module" src="js/graphing.js"></script>
 
     <title>Binomial Distribution Calculator</title>
 </head>
 <body>
+    <header>
+        <div class="radio-btns dist-type">
+            <div class="input-container">
+                <input type="radio" id="binomial-calc" name="dist-type" value="Binomial">
+                <label for="binomial-calc">Binomial</label>
+            </div>
+            <div class="input-container">
+                <input type="radio" id="geometric-calc" name="dist-type" value="Geometric">
+                <label for="geometric-calc">Geometric</label>
+            </div>
+            <div class="input-container">
+                <input type="radio" id="neg-binomial-calc" name="dist-type" value="Negative Binomial">
+                <label for="neg-binomial-calc">Negative Binomial</label>
+            </div>
+            <div class="input-container">
+                <input type="radio" id="hypergeometric-calc" name="dist-type" value="Hypergeometric">
+                <label for="hypergeometric-calc">Hypergeometric</label>
+            </div>
+            <div class="input-container">
+                <input type="radio" id="poisson-calc" name="dist-type" value="Poisson">
+                <label for="poisson-calc">Poisson</label>
+            </div>
+        </div>
+    </header>
     <h1>Binomial Distribution Calculator</h1>
-    <div class="dist-input">
-        <div class="dist-parameters">
-            <div class="input-container">
-                <label for="n-trials">n</label>
-                <input type="number" class="dist-parameter" min="0" id="n-trials">
-            </div>
-            
-            <div class="input-container">
-                <label for="p-success">p</label>
-                <input type="number" class="dist-parameter" min="0.0" max="1.0" step="0.01" id="p-success">
-            </div>
-        </div>
-    </div>
-    <div class="dist-output">
-        <div class="dist-graph"></div>
-        <div class="prob-tables">
-            <div class="container">
-                <table class="prob-table" id="prob-table">
-                    <thead>
-                        <tr>
-                            <th>x</th>
-                            <th>P(X = x)</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                    <tfoot>
-                        <tr>
-                            <td><button id="probDownloadBtn">Download</button></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="container">
-                <table class="prob-table" id="cum-prob-table">
-                    <thead>
-                        <tr>
-                            <th>x</th>
-                            <th>Σ P(X &le; x)</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                    <tfoot>
-                        <tr>
-                            <td><button id="cumProbDownloadBtn">Download</button></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-        <div class="container dist-value">
-            <div class="value-inputs">
+    <main>
+        <div class="dist-input">
+            <div class="dist-parameters container">
                 <div class="input-container">
-                    <label for="x">x</label>
-                    <input class="dist-val-input" type="number" min="0" id="x">
+                    <label for="n-trials">n</label>
+                    <input type="number" class="dist-parameter" min="0" id="n-trials">
                 </div>
-                <div class="value-select">
-                    <select class="dist-val-input" name="prob-value-select" id="prob-value-select">
-                        <option value="eqX">P(X = x)</option>
-                        <option value="leX">P(X &le; x)</option>
-                        <option value="geX">P(X &ge; x)</option>
-                    </select>
+                <div class="input-container">
+                    <label for="p-success">p</label>
+                    <input type="number" class="dist-parameter" min="0.0" max="1.0" step="0.01" id="p-success">
                 </div>
             </div>
-            <div class="value-output"></div>
         </div>
-        <div class="container dist-properties">
-            <div class="dist-prop ev">
-                <span class="prop-label">μ = E(X) =</span>
-                <span class="prop-value" id="ev-value">N/A</span>
+        <div class="dist-output">
+            <div class="dist-graph"></div>
+            <div class="prob-tables">
+                <div class="container">
+                    <table class="prob-table" id="prob-table">
+                        <thead>
+                            <tr>
+                                <th>x</th>
+                                <th>P(X = x)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <td><button id="probDownloadBtn">Download</button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="container">
+                    <table class="prob-table" id="cum-prob-table">
+                        <thead>
+                            <tr>
+                                <th>x</th>
+                                <th>Σ P(X &le; x)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <td><button id="cumProbDownloadBtn">Download</button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-            <div class="dist-prop var">
-                <span class="prop-label">σ<sup>2</sup> = Var(X) =</span>
-                <span class="prop-value" id="var-value">N/A</span>
+            <div class="container dist-value">
+                <div class="value-inputs">
+                    <div class="input-container">
+                        <label for="x">x</label>
+                        <input class="dist-val-input" type="number" min="0" id="x">
+                    </div>
+                    <div class="value-select">
+                        <select class="dist-val-input" name="prob-value-select" id="prob-value-select">
+                            <option value="eqX">P(X = x)</option>
+                            <option value="leX">P(X &le; x)</option>
+                            <option value="geX">P(X &ge; x)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="value-output"></div>
             </div>
-            <div class="dist-prop sd">
-                <span class="prop-label">σ = SD(X) =</span>
-                <span class="prop-value" id="sd-value">N/A</span>
+            <div class="container dist-properties">
+                <div class="dist-prop ev">
+                    <span class="prop-label">μ = E(X) =</span>
+                    <span class="prop-value" id="ev-value">N/A</span>
+                </div>
+                <div class="dist-prop var">
+                    <span class="prop-label">σ<sup>2</sup> = Var(X) =</span>
+                    <span class="prop-value" id="var-value">N/A</span>
+                </div>
+                <div class="dist-prop sd">
+                    <span class="prop-label">σ = SD(X) =</span>
+                    <span class="prop-value" id="sd-value">N/A</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="tooltip">
-        <label for="tooltip-val"></label>
-        <div id="tooltip-val"></div>
-    </div>
+        <div id="tooltip">
+            <label for="tooltip-val"></label>
+            <div id="tooltip-val"></div>
+        </div>
+    </main>
 </body>
 </html>

@@ -36,3 +36,13 @@ export function get_prob_data_blob(dist) {
 
     return blob;
 }
+
+export function get_dist_type() {
+    let checked_dist = document.querySelector('input[name="dist-type"]:checked');
+    if (!checked_dist) {
+        document.getElementById("binomial-calc").checked = true;
+        return "Binomial";
+    }
+    
+    return checked_dist.value;
+}
