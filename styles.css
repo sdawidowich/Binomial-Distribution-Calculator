@@ -55,16 +55,24 @@ body {
     padding: 0.5rem;
 }
 
+select {
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    appearance: none;
+    background: url("data:image/svg+xml,<svg width='16' height='16' xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 184l144 144 144-144'/></svg>") no-repeat right 6px center;
+}
+
 input, select, button {
     background-color: var(--input-background-color);
     border: 1px solid var(--container-border-color);
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0rem 0.5rem;
     box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.089);
     
     min-width: 80px;
     width: 100%;
     max-width: 150px;
+    height: 33.6px;
 }
 
 /* Output Styling */
@@ -228,7 +236,7 @@ tbody tr:hover {
 
 .value-select {
     margin: 0.5rem;
-    flex-grow: 2;
+    width: 100%;
     min-width: 5rem;
 }
 
