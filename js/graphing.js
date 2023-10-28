@@ -26,7 +26,7 @@ export function graph_dist(dist) {
 
     // Declare the y (vertical position) scale.
     const y_scale = d3.scaleLinear()
-        .domain([0, d3.max(data, (d) => dist.probabilities[d] + 0.025)])
+        .domain([0, d3.max(data, (d) => dist.probabilities[d] * 1.2  >= 1 ? 1 : dist.probabilities[d] * 1.2)])
         .range([height - margin.bottom, margin.top]);
 
     // Remove existing graph if it exists
@@ -77,6 +77,18 @@ export function graph_dist(dist) {
     }
     else if (width < 550) {
         tickIncrement = Math.floor(Math.log2(data.length) / Math.log2(2));
+    }
+    else if (data.length > 1000) {
+        tickIncrement = Math.floor(Math.log10(data.length) / (Math.log10(2)) * 4);
+    }
+    else if (data.length > 500) {
+        tickIncrement = Math.floor(Math.log10(data.length) / (Math.log10(2)) * 2);
+    }
+    else if (data.length > 100) {
+        tickIncrement = Math.floor(Math.log10(data.length) / Math.log10(2));
+    }
+    if (tickIncrement == 0) {
+        tickIncrement = 1;
     }
 
     // Create x-axis 
