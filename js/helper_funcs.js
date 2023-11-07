@@ -38,9 +38,9 @@ export function get_prob_data_blob(dist) {
 }
 
 export function get_dist_type() {
-    let checked_dist = document.querySelector('input[name="dist-type"]:checked');
+    let checked_dist = document.getElementById('dist-type');
     if (!checked_dist) {
-        document.getElementById("binomial-calc").checked = true;
+        document.getElementById("binomial-calc").selected = true;
         return "Binomial";
     }
     

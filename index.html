@@ -17,34 +17,20 @@
     <script type="module" src="js/dist-calculators/poisson_dist.js"></script>
     <script type="module" src="js/graphing.js"></script>
 
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <title>Distribution Calculator</title>
 </head>
 <body>
     <header>
-        <div class="radio-btns dist-type">
-            <div class="input-container">
-                <input type="radio" id="binomial-calc" name="dist-type" value="Binomial">
-                <label for="binomial-calc">Binomial</label>
-            </div>
-            <div class="input-container">
-                <input type="radio" id="geometric-calc" name="dist-type" value="Geometric">
-                <label for="geometric-calc">Geometric</label>
-            </div>
-            <div class="input-container">
-                <input type="radio" id="neg-binomial-calc" name="dist-type" value="Negative Binomial">
-                <label for="neg-binomial-calc">Negative Binomial</label>
-            </div>
-            <div class="input-container">
-                <input type="radio" id="hypergeometric-calc" name="dist-type" value="Hypergeometric">
-                <label for="hypergeometric-calc">Hypergeometric</label>
-            </div>
-            <div class="input-container">
-                <input type="radio" id="poisson-calc" name="dist-type" value="Poisson">
-                <label for="poisson-calc">Poisson</label>
-            </div>
-        </div>
+        <h1>Binomial Distribution Calculator</h1>
+        <select name="dist-type" id="dist-type">
+            <option id="binomial-calc" value="Binomial">Binomial</option>
+            <option id="geometric-calc" value="Geometric">Geometric</option>
+            <option id="neg-binomial-calc" value="Negative Binomial">Negative Binomial</option>
+            <option id="hypergeometric-calc" value="Hypergeometric">Hypergeometric</option>
+            <option id="poisson-calc" value="Poisson">Poisson</option>
+        </select>
     </header>
-    <h1>Binomial Distribution Calculator</h1>
     <main>
         <div class="dist-input container">
             <div class="input-tooltip">

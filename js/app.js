@@ -7,5 +7,6 @@ window.onload = () => {
     document.querySelectorAll(".dist-parameter, .dist-val-input").forEach((el) => {
         el.addEventListener("change", update_dist);
     });
-    document.querySelector(".dist-type").addEventListener("change", change_dist_type);
+    document.getElementById("dist-type").addEventListener("change", change_dist_type);
+    document.querySelector(".input-tooltip > .icon").addEventListener("click", (e) => e.currentTarget.classList.toggle("clicked"));
 }
