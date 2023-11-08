@@ -79,6 +79,11 @@ main {
     box-sizing: border-box;
     cursor: default;
 
+    /* Prevent text highlighting */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
     font-size: 14px;
     transition: 0.1s;
 }
@@ -94,11 +99,26 @@ main {
     transition: 0.1s;
 }
 
-.input-tooltip > .icon:hover + .text, .input-tooltip > .icon.clicked + .text {
+@media (hover: hover) {
+    .input-tooltip > .icon:hover + .text {
+        display: block;
+    }
+
+    .input-tooltip > .icon:hover {
+        filter: brightness(0.9);
+    }
+
+    input[type="text"]:hover, input[type="number"]:hover, select:hover, button:hover {
+        filter: brightness(0.97);
+    }
+}
+
+.input-tooltip > .icon.clicked + .text {
     display: block;
 }
 
-.input-tooltip > .icon:hover, .input-tooltip > .icon.clicked {
+.input-tooltip > .icon.clicked {
+    box-shadow: inset 0 0 0.2rem 0.1rem rgba(0, 0, 0, 0.097);
     filter: brightness(0.9);
 }
 
@@ -124,6 +144,8 @@ select {
     -webkit-appearance: none; 
     appearance: none;
     background: url("data:image/svg+xml,<svg width='16' height='16' xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 184l144 144 144-144'/></svg>") no-repeat right 6px center;
+
+    color: black;
 }
 
 input[type="text"], input[type="number"], select, button {
@@ -138,10 +160,6 @@ input[type="text"], input[type="number"], select, button {
     max-width: 150px;
     height: 33.6px;
     transition: 0.05s;
-}
-
-input[type="text"]:hover, input[type="number"]:hover, select:hover, button:hover {
-    filter: brightness(0.97);
 }
 
 /* Output Styling */
