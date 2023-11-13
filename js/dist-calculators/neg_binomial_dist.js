@@ -28,7 +28,7 @@ export default function calc_dist(r, p) {
     do {
         neg_binomial_dist.probabilities[i] = calc_prob(r, p, i);
         i++;
-    } while (neg_binomial_dist.probabilities[i - 1] > 0.0000000001);
+    } while (i < r + 3 || neg_binomial_dist.probabilities[i - 1] > neg_binomial_dist.probabilities[i - 2] || neg_binomial_dist.probabilities[i - 1] > 0.0000000001);
 
     for (let key in neg_binomial_dist.probabilities) {
         if (key == r) {

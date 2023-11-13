@@ -8,6 +8,10 @@ export function graph_dist(dist) {
         return dist.probabilities[key] > 0.000001;
     });
 
+    while (data.length > 200) {
+        dist.probabilities[data[0]] < dist.probabilities[data[data.length - 1]] ? data.shift() : data.pop();
+    }
+
     // Declare the chart dimensions and margins.
     const width = document.querySelector(".dist-graph").clientWidth;
     const height = width / 2;

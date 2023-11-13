@@ -9,7 +9,7 @@ function calc_variance(lambda) {
 }
 
 function calc_prob(lambda, x) {
-    return Math.pow(10, Math.log10(Math.pow(lambda, x) * Math.pow(Math.E, -1 * lambda)) - fact_log10(x));
+    return Math.pow(10, x * Math.log10(lambda) + Math.log10(Math.pow(Math.E, -1 * lambda)) - fact_log10(x));
 }
 
 export default function calc_dist(lambda) {
@@ -28,7 +28,7 @@ export default function calc_dist(lambda) {
     do {
         poisson_dist.probabilities[i] = calc_prob(lambda, i);
         i++;
-    } while (poisson_dist.probabilities[i - 1] > 0.0000000001);
+    } while (i < 3 || poisson_dist.probabilities[i - 1] > poisson_dist.probabilities[i - 2] || poisson_dist.probabilities[i - 1] > 0.0000000001);
 
     for (let key in poisson_dist.probabilities) {
         if (key == 0) {
