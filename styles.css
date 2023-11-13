@@ -34,11 +34,6 @@ header {
     box-sizing: border-box;
 }
 
-.radio-btns {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 #dist-type {
     font-size: 1rem;
     height: 3rem;
@@ -207,7 +202,7 @@ input[type="text"], input[type="number"], select, button {
     filter: brightness(0.7);
 }
 
-/* Tooltip Stylinh */
+/* Tooltip Styling */
 
 #tooltip {
     opacity: 0;
