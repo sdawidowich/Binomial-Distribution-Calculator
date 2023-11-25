@@ -23,7 +23,7 @@ body {
 
 /* Header Styling */
 
-header {
+header, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -375,4 +375,28 @@ select:hover, button:hover {
 
 .prop-label {
     font-style: italic;
+}
+
+/* Footer Styling */
+
+footer {
+    border-top: 1px solid var(--container-border-color);
+}
+
+footer > p, ul, li {
+    margin: 0.3rem;
+}
+
+.links {
+    display: flex;
+}
+
+.links img {
+    width: 32px;
+    height: 32px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
